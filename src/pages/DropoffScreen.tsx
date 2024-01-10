@@ -3,11 +3,11 @@ import React from 'react';
 import {Text} from 'react-native';
 import Toolbar from '../components/toolbar';
 
-export default function SchedulePickup ({navigation}) {
+export default function DropoffScreen ({navigation}) {
   return (
     <>
       <Toolbar
-        title="SchedulePickup"
+        title="Schedule Dropoff"
         onBackPress={navigation.goBack}
         rightIconName="home-sharp"
       />

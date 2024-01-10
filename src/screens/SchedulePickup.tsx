@@ -16,14 +16,24 @@ const SchedulePickup = ({navigation}) => {
   return (
     <View>
       <Toolbar
-        title="SchedulePickup"
+        title="Schedule Request"
         onBackPress={handleBackPress}
         rightIconName="home-sharp"
       />
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate("Pickup")}>
+        {/* Customize your TouchableOpacity content here */}
+        <View style={styles.content}>
+          <Text style={styles.text}>Schedule Pickup</Text>
+          <Icon name="arrow-forward" size={20} color="black" />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Dropoff")}>
+        {/* Customize your TouchableOpacity content here */}
+        <View style={styles.content}>
+          <Text style={styles.text}>Schedule Drop-off</Text>
+          <Icon name="arrow-forward" size={20} color="black" />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

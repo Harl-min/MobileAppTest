@@ -23,7 +23,7 @@ const TabNavigators = () => {
       }}>
       <Tab.Screen
         name="Home"
-        component={ScheduleRequest}
+        component={SchedulePickup}
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <CustomIcons
@@ -35,7 +35,7 @@ const TabNavigators = () => {
         }} />
       <Tab.Screen
         name="tab"
-        component={SchedulePickup}
+        component={ScheduleRequest}
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <CustomIcons

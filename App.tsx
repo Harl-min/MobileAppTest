@@ -5,7 +5,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ScheduleRequest from './src/screens/ScheduleRequest';
 import {NavigationContainer} from '@react-navigation/native';
 import TabNavigators from './src/navigators/TabNavigators';
-import DetailsScreen from './src/pages/DetailsScreen';
+import DropoffScreen from './src/pages/DropoffScreen';
+import PickupScreen from './src/pages/PickupScreen';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
         initialRouteName="Tab"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Tab" component={TabNavigators}></Stack.Screen>
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Dropoff" component={DropoffScreen} />
+        <Stack.Screen name="Pickup" component={PickupScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
