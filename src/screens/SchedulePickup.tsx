@@ -2,7 +2,7 @@
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { List } from 'react-native-paper';
+import {FONTSIZE} from '../theme/theme';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toolbar from '../components/toolbar';
 
@@ -14,38 +14,58 @@ const handleBackPress = () => {
 const SchedulePickup = ({navigation}) => {
 
   return (
-    <View>
+    <View >
       <Toolbar
         title="Schedule Request"
         onBackPress={handleBackPress}
         rightIconName="home-sharp"
       />
-      <TouchableOpacity onPress={() => navigation.navigate("Pickup")}>
-        {/* Customize your TouchableOpacity content here */}
+      <View style={styles.container}>
+      <TouchableOpacity style={styles.list} onPress={() => navigation.navigate("Pickup")}>
         <View style={styles.content}>
-          <Text style={styles.text}>Schedule Pickup</Text>
+        <Icon name="arrow-forward" size={20} color="black" />
+          <View style={styles.subheader}>
+          <Text style={FONTSIZE.size_12}>Schedule Pickup</Text>
+          <Text style={FONTSIZE.size_10}>Request for waste pickup at a goal</Text>
+          </View>
           <Icon name="arrow-forward" size={20} color="black" />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Dropoff")}>
-        {/* Customize your TouchableOpacity content here */}
+      <TouchableOpacity style={styles.list} onPress={() => navigation.navigate("Dropoff")}>
         <View style={styles.content}>
-          <Text style={styles.text}>Schedule Drop-off</Text>
+        <Icon name="arrow-forward" size={20} color="black" />
+        <View style={styles.subheader}>
+          <Text style={FONTSIZE.size_12}>Schedule Drop-off</Text>
+          <Text style={FONTSIZE.size_10}>Request for waste drop-off at a goal</Text>
+          </View>
           <Icon name="arrow-forward" size={20} color="black" />
         </View>
       </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 23,
+    marginVertical: 40,
+  },
+  list: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    height: 70, 
+    marginVertical: 10,
+    padding: 13
+  },
+  subheader: {
+    flexDirection: 'column',
+  },
   content: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    // padding: 16,
   },
   text: {
     fontSize: 16,

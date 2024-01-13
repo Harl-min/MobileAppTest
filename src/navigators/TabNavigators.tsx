@@ -8,7 +8,7 @@ import SchedulePickup from '../screens/SchedulePickup';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {COLORS} from '../theme/theme';
 import CustomIcons from '../components/customIcons';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +26,7 @@ const TabNavigators = () => {
         component={SchedulePickup}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <CustomIcons
+            <Ionicons
               name="home"
               size={55}
               color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
@@ -38,7 +38,7 @@ const TabNavigators = () => {
         component={ScheduleRequest}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <CustomIcons
+            <Ionicons
               name="home"
               size={55}
               color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}

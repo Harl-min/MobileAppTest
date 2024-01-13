@@ -11,7 +11,7 @@ export default function DropoffScreen ({navigation}) {
         onBackPress={navigation.goBack}
         rightIconName="home-sharp"
       />
-      <Text>schedulePickup</Text>
+      <Text>Below are the nearest Drop off locations closest to you</Text>
     </>
   );
 }
