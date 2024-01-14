@@ -9,6 +9,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {COLORS} from '../theme/theme';
 import CustomIcons from '../components/customIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Maticons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -20,27 +22,63 @@ const TabNavigators = () => {
         headerShown: false,
         tabBarShowLabel: true,
         tabBarStyle: styles.tabBarStyle,
+        tabBarActiveTintColor: COLORS.primaryGradient, // Change this color to your desired focused text color
       }}>
-      <Tab.Screen
+        <Tab.Screen
         name="Home"
-        component={SchedulePickup}
-        options={{
-          tabBarIcon: ({focused, color, size}) => (
-            <Ionicons
-              name="home"
-              size={55}
-              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
-            />
-          ),
-        }} />
-      <Tab.Screen
-        name="tab"
         component={ScheduleRequest}
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Ionicons
               name="home"
-              size={55}
+              size={24}
+              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+            />
+          ),
+        }} />
+      <Tab.Screen
+        name="Pickup"
+        component={SchedulePickup}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Maticons
+              name="calendar-clock"
+              size={24}
+              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+            />
+          ),
+        }} />
+      <Tab.Screen
+        name="Wallet"
+        component={ScheduleRequest}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Ionicons
+              name="wallet"
+              size={24}
+              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+            />
+          ),
+        }} />
+        <Tab.Screen
+        name="Chatroom"
+        component={ScheduleRequest}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Ionicons
+              name="chatbubbles-outline"
+              size={24}
+              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+            />
+          ),
+        }} /><Tab.Screen
+        name="Account"
+        component={ScheduleRequest}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Maticons
+              name="account"
+              size={24}
               color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
             />
           ),
@@ -51,20 +89,14 @@ const TabNavigators = () => {
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    height: 83,
+    height: 55,
     position: 'absolute',
     backgroundColor: COLORS.primaryWhite,
     borderTopWidth: 0,
     elevation: 0,
     borderTopColor: 'transparent',
-  },
-  BlurViewStyles: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
+    paddingBottom: 10
+  }
 });
 
 export default TabNavigators;

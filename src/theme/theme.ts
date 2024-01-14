@@ -98,6 +98,30 @@ interface Spacing {
     size_28: 28,
     size_30: 30,
   };
+
+  interface FontWeight {
+    weight_100: number;
+    weight_200: number;
+    weight_300: number;
+    weight_400: number;
+    weight_500: number;
+    weight_600: number;
+    weight_700: number;
+    weight_800: number;
+    weight_900: number;
+  }
+  
+  export const FONTWEIGHT: FontWeight = {
+    weight_100: 100,
+    weight_200: 200,
+    weight_300: 300,
+    weight_400: 400,
+    weight_500: 500,
+    weight_600: 600,
+    weight_700: 700,
+    weight_800: 800,
+    weight_900: 900
+  };
   
   interface BorderRadius {
     radius_4: number;

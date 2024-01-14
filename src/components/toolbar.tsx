@@ -2,6 +2,8 @@
 import React, { FC } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { COLORS, FONTSIZE } from '../theme/theme';
 
 interface ToolbarProps {
   title: string;
@@ -14,12 +16,12 @@ const Toolbar: FC<ToolbarProps> = ({ title, onBackPress, rightIconName, onRightI
   return (
     <View style={styles.toolbar}>
       <TouchableOpacity onPress={onBackPress} style={styles.iconContainer}>
-        <Ionicons name="arrow-back-sharp" size={30} color="#000" />
+        <MaterialIcons name="arrow-back-ios" size={20} color="#000" />
       </TouchableOpacity>
       <Text style={styles.title}>{title}</Text>
       {rightIconName && (
         <TouchableOpacity onPress={onRightIconPress} style={styles.iconContainer}>
-          <Ionicons name={rightIconName} size={30} color="#000" />
+          <Ionicons name="notifications" size={20} color="#000" />
         </TouchableOpacity>
       )}
     </View>
@@ -35,13 +37,23 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       borderBottomWidth: 1,
       borderBottomColor: '#ddd',
+      height: 60,
+      fontSize: FONTSIZE.size_10,
     },
     iconContainer: {
-      padding: 10,
+      width: 32,
+      height: 32,
+      borderRadius: 20,
+      backgroundColor: '#1A1A1A0D',
+      marginHorizontal: 10,
+      justifyContent: 'center',
+      alignContent: 'center',
+      alignItems: 'center'
     },
     title: {
-      fontSize: 20,
+      fontSize: 16,
       fontWeight: 'bold',
+      color: COLORS.primaryBlackHex
     },
   });
 
