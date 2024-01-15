@@ -21,7 +21,7 @@ const SchedulePickup = ({navigation}) => {
     setShowAnimation(true);
     setTimeout(() => {
       setShowAnimation(false);
-      navigation.navigate('Pickup');
+      navigation.navigate('PickupScreen');
     }, 3000);
   };
   const buttonPressHandler = () => {
@@ -50,8 +50,8 @@ const SchedulePickup = ({navigation}) => {
               style={styles.IconContainer}
             />
             <View style={styles.subheader}>
-              <Text style={FONTSIZE.size_12}>Schedule Pickup</Text>
-              <Text style={FONTSIZE.size_10}>
+              <Text style={styles.subtitle}>Schedule Pickup</Text>
+              <Text style={styles.subtitle2}>
                 Request for waste pickup at a goal
               </Text>
             </View>
@@ -62,8 +62,8 @@ const SchedulePickup = ({navigation}) => {
           <View style={styles.content}>
             <Icon name="location" size={17} color="black"  style={styles.IconContainer}/>
             <View style={styles.subheader2}>
-              <Text style={FONTSIZE.size_12}>Schedule Drop-off</Text>
-              <Text style={FONTSIZE.size_10}>
+              <Text style={styles.subtitle}>Schedule Drop-off</Text>
+              <Text style={styles.subtitle2}>
                 Request for waste drop-off at a goal
               </Text>
             </View>
@@ -95,8 +95,10 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 13,
   },
-  LottieAnimation: {
-    height: 250,
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   IconContainer: {
     backgroundColor: COLORS.primaryGradient,
@@ -108,16 +110,28 @@ const styles = StyleSheet.create({
   },
   subheader: {
     flexDirection: 'column',
-    marginRight: 50
+    marginRight: 80,
   },
   subheader2: {
     flexDirection: 'column',
-    marginRight: 40
+    marginRight: 70
   },
-  content: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  LottieAnimation: {
+    height: '100%',
+    backgroundColor: COLORS.primaryWhite,
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+  },
+  subtitle: {
+    fontSize: FONTSIZE.size_16,
+    color: COLORS.primaryBlackHex
+  },
+  subtitle2: {
+    fontSize: FONTSIZE.size_12,
+    color: COLORS.primaryBlackHex
   },
   text: {
     fontSize: 16,
