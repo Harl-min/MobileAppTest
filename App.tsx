@@ -11,7 +11,7 @@ import PickupScreen from './src/pages/PickupScreen';
 import SelectedCategoryScreen from './src/pages/SelectedCategoryScreen';
 import WasteCategory from './src/pages/WasteCategoryScreen';
 import ScheduleDetails from './src/pages/ScheduleDetailsScreen';
-import Pickup from './src/pages/Pickup';
+// import Pickup from './src/pages/Pickup';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Tab" component={TabNavigators}></Stack.Screen>
         <Stack.Screen name="Dropoff" component={DropoffScreen} />
-        <Stack.Screen name="Pickup" component={PickupScreen} />
+        {/* <Stack.Screen name="Pickup" component={PickupScreen} /> */}
         {/* <Stack.Screen name="PickupScreen" component={Pickup} /> */}
         <Stack.Screen name="WasteCategory" component={WasteCategory} />
         <Stack.Screen

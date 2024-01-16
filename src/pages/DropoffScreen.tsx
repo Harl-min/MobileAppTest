@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect } from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Toolbar from '../components/toolbar';
 import LocationCard from '../components/LocationCard';

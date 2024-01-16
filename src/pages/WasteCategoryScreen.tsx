@@ -27,7 +27,9 @@ export default function WasteCategory({navigation}) {
         {/* <Chip icon="information" onPress={() => console.log('Pressed')}>
           Example Chip
         </Chip> */}
-<Text>Select each waste you’ll like for Pick-up from the waste category.</Text>
+        <Text>
+          Select each waste you’ll like for Pick-up from the waste category.
+        </Text>
         <Searchbar
           style={styles.Searchbar}
           placeholder="Search"
@@ -58,6 +60,6 @@ const styles = StyleSheet.create({
   },
   Searchbar: {
     borderRadius: 6,
-    marginVertical: 32
-  }
-})
+    marginVertical: 32,
+  },
+});

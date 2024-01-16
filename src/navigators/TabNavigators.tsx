@@ -4,7 +4,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import ScheduleRequest from '../screens/ScheduleRequest';
-import SchedulePickup from '../screens/SchedulePickup';
+import SchedulePickup from '../screens/SchedulePickupp/index';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {COLORS} from '../theme/theme';
 import CustomIcons from '../components/customIcons';

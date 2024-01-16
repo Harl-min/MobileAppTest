@@ -38,22 +38,6 @@ export default function ScheduleDetails({route, navigation}) {
           <Text>Waste category</Text>
           <Text>Waste category</Text>
         </View>
-        <View style={styles.title}>
-          <Text>Waste category</Text>
-          <Text>Waste category</Text>
-        </View>
-        <View style={styles.title}>
-          <Text>Waste category</Text>
-          <Text>Waste category</Text>
-        </View>
-        <View style={styles.title}>
-          <Text>Waste category</Text>
-          <Text>Waste category</Text>
-        </View>
-        <View style={styles.title}>
-          <Text>Waste category</Text>
-          <Text>Waste category</Text>
-        </View>
       </View>
     </View>
   );
