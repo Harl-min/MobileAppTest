@@ -8,7 +8,7 @@ import { COLORS, FONTSIZE } from '../theme/theme';
 
   export default function DropoffScreen ({navigation}) {
     const buttonPress = () => {
-      console.log('Button Pressed')
+      console.log('Button Pressed');
     };
     return (
       <>

@@ -72,7 +72,7 @@ const SchedulePickup = ({navigation}) => {
         {showAnimation ? (
           <PopUpAnimation
             style={styles.LottieAnimation}
-            source={require('../lottie/successful.json')}
+            source={require('../../lottie/successful.json')}
           />
         ) : (
           <></>

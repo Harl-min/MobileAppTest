@@ -38,6 +38,14 @@ const SchedulePickup = ({navigation}) => {
         onBackPress={handleBackPress}
         rightIconName="home-sharp"
       />
+       {showAnimation ? (
+          <PopUpAnimation
+            style={styles.LottieAnimation}
+            source={require('../../src/lottie/successful.json')}
+          />
+        ) : (
+          <></>
+        )}
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.list}
@@ -70,14 +78,6 @@ const SchedulePickup = ({navigation}) => {
             <Icon name="arrow-forward" size={20} color="black" />
           </View>
         </TouchableOpacity>
-        {showAnimation ? (
-          <PopUpAnimation
-            style={styles.LottieAnimation}
-            source={require('../lottie/successful.json')}
-          />
-        ) : (
-          <></>
-        )}
       </View>
     </View>
   );
@@ -119,11 +119,7 @@ const styles = StyleSheet.create({
   LottieAnimation: {
     height: '100%',
     backgroundColor: COLORS.primaryWhite,
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1000,
+    
   },
   subtitle: {
     fontSize: FONTSIZE.size_16,
