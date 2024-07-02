@@ -10,6 +10,10 @@ import {COLORS} from '../theme/theme';
 import CustomIcons from '../components/customIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Maticons from 'react-native-vector-icons/MaterialCommunityIcons';
+import HomePage from '../screens/Home';
+import Wallet from '../screens/Wallet';
+import ChatroomScreen from '../screens/Chatroom';
+import AccountPage from '../screens/Account';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +30,7 @@ const TabNavigators = () => {
       }}>
         <Tab.Screen
         name="Home"
-        component={ScheduleRequest}
+        component={HomePage}
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Ionicons
@@ -50,7 +54,7 @@ const TabNavigators = () => {
         }} />
       <Tab.Screen
         name="Wallet"
-        component={ScheduleRequest}
+        component={Wallet}
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Ionicons
@@ -62,7 +66,7 @@ const TabNavigators = () => {
         }} />
         <Tab.Screen
         name="Chatroom"
-        component={ScheduleRequest}
+        component={ChatroomScreen}
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Ionicons
@@ -73,7 +77,7 @@ const TabNavigators = () => {
           ),
         }} /><Tab.Screen
         name="Account"
-        component={ScheduleRequest}
+        component={AccountPage}
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Maticons
