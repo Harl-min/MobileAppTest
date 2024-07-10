@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ScheduleRequest from './src/screens/ScheduleRequest';
 import {NavigationContainer} from '@react-navigation/native';
@@ -17,6 +17,11 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar
+        animated={true}
+        backgroundColor="#fff"
+        barStyle={'dark-content'}
+      />
       <Stack.Navigator
         initialRouteName="Tab"
         screenOptions={{headerShown: false}}>
