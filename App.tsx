@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ScheduleRequest from './src/screens/ScheduleRequest';
@@ -12,11 +12,21 @@ import SelectedCategoryScreen from './src/pages/SelectedCategoryScreen';
 import WasteCategory from './src/pages/WasteCategoryScreen';
 import ScheduleDetails from './src/pages/ScheduleDetailsScreen';
 import Pickup from './src/pages/Pickup';
+import {useColorScheme} from 'react-native';
+import { DefaultTheme, DarkTheme} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
+  const MyTheme = isDarkTheme ? DarkTheme : DefaultTheme;
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <StatusBar
         animated={true}
         backgroundColor="#fff"

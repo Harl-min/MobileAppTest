@@ -18,7 +18,7 @@ const handleRightIconPress = () => {
   // Handle right icon press
   console.log('Right icon pressed');
 };
-const Wallet = () => {
+const Wallet = ({ toggleTheme }) => {
     const [expanded, setExpanded] = React.useState(true);
 
     const handlePress = () => setExpanded(!expanded);
@@ -30,7 +30,7 @@ const Wallet = () => {
       </TouchableOpacity>
       <Text style={styles.title}>Wallet</Text>
       </View>
-      <WalletCard handleSubmit={handleBackPress}/>
+      <WalletCard handleSubmit={handleBackPress} toggleTheme={toggleTheme}/>
     </View>
   );
 };

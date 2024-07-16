@@ -1,17 +1,52 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {BORDERRADIUS, COLORS, FONTSIZE} from '../theme/theme';
 import {Button} from 'react-native-paper';
+import {useTheme} from '@react-navigation/native';
+import { walletCard } from '../actions/walletCard';
+import { AxiosResponse } from 'axios';
+import { UserData } from '../interfaces/user.interface';
 
 interface CoffeeCardProps {
   handleSubmit: (value: any) => void;
+  toggleTheme: any;
+  data: any;
+}
+interface UserResponse {
+  data: {
+    id: number;
+    name: string;
+  };
 }
 
-const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit}) => {
+const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit, toggleTheme, data}) => {
+  const {colors} = useTheme();
+  const { getUser } = walletCard();
+
+  const [user, setUser] = useState<UserData>({
+    email: '',
+    bvn: 0,
+    address: '',
+    next_of_kin: '',
+});
   const buttonPress = () => {
     console.log('Button Pressed');
+  }; 
+  
+  const fetchUser = async () => {
+    try {
+      const response: AxiosResponse<UserResponse> = await getUser();
+      if (response?.data) {
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
+  useEffect(() => {
+    fetchUser();
+  }, []);
   return (
     <View>
       <View style={styles.container}>
@@ -51,6 +86,11 @@ const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit}) => {
           </View>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        style={{backgroundColor: colors.card}}
+        onPress={toggleTheme}>
+        <Text style={{color: colors.text}}>Button!</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -76,7 +116,7 @@ const styles = StyleSheet.create({
   CardText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10
+    marginTop: 10,
   },
   CardButtons: {
     flexDirection: 'row',
