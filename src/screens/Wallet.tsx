@@ -7,7 +7,7 @@ import {List} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import WalletCard from '../components/WalletCard';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { COLORS } from '../theme/theme';
+import {COLORS} from '../theme/theme';
 
 const handleBackPress = () => {
   // Handle back button press
@@ -18,19 +18,24 @@ const handleRightIconPress = () => {
   // Handle right icon press
   console.log('Right icon pressed');
 };
-const Wallet = ({ toggleTheme }) => {
-    const [expanded, setExpanded] = React.useState(true);
+const Wallet = ({}) => {
+  const [expanded, setExpanded] = React.useState(true);
 
-    const handlePress = () => setExpanded(!expanded);
+  const handlePress = () => setExpanded(!expanded);
   return (
     <View style={styles.body}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.iconContainer}>
-        <MaterialIcons style={styles.icon} name="arrow-back-ios" size={20} color="#000" />
-      </TouchableOpacity>
-      <Text style={styles.title}>Wallet</Text>
+          <MaterialIcons
+            style={styles.icon}
+            name="arrow-back-ios"
+            size={20}
+            color="#000"
+          />
+        </TouchableOpacity>
+        <Text style={styles.title}>Wallet</Text>
       </View>
-      <WalletCard handleSubmit={handleBackPress} toggleTheme={toggleTheme}/>
+      <WalletCard handleSubmit={handleBackPress} />
     </View>
   );
 };
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 30,
-    gap: 10
+    gap: 10,
   },
   iconContainer: {
     width: 32,
@@ -55,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    marginLeft: 7
+    marginLeft: 7,
   },
   title: {
     fontSize: 18,

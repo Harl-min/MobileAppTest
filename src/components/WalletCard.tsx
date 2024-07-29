@@ -5,39 +5,29 @@ import {Button} from 'react-native-paper';
 import {useTheme} from '@react-navigation/native';
 import { walletCard } from '../actions/walletCard';
 import { AxiosResponse } from 'axios';
-import { UserData } from '../interfaces/user.interface';
+import { Account, UserResponse } from '../interfaces/user.interface';
 
-interface CoffeeCardProps {
+interface WalletProps {
   handleSubmit: (value: any) => void;
-  toggleTheme: any;
-  data: any;
-}
-interface UserResponse {
-  data: {
-    id: number;
-    name: string;
-  };
+  toggleTheme?: any;
 }
 
-const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit, toggleTheme, data}) => {
+const WalletCard: React.FC<WalletProps> = ({handleSubmit, toggleTheme}) => {
   const {colors} = useTheme();
-  const { getUser } = walletCard();
+  const { getUser, getUserBalance } = walletCard();
 
-  const [user, setUser] = useState<UserData>({
-    email: '',
-    bvn: 0,
-    address: '',
-    next_of_kin: '',
-});
+  const [userData, setUserData] = useState<any[] | null>(null);
+
   const buttonPress = () => {
     console.log('Button Pressed');
   }; 
-  
+  const token = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc';
   const fetchUser = async () => {
     try {
-      const response: AxiosResponse<UserResponse> = await getUser();
+      const response: AxiosResponse<any> = await getUserBalance(token);
       if (response?.data) {
-        console.log(response.data);
+        console.log(response.data.available[0]);
+        setUserData(response.data.available[0]);
       }
     } catch (error) {
       console.error(error);
@@ -52,16 +42,20 @@ const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit, toggleTheme, data}
       <View style={styles.container}>
         <TouchableOpacity onPress={buttonPress}>
           <View style={styles.CardContainer}>
+          {userData && (
             <View style={styles.CardText}>
               <View>
                 <Text style={styles.subtitle}>Total Balance</Text>
-                <Text style={styles.subtitle2}>{'\u20A6'}1,234.50</Text>
+                {/* <Text style={styles.subtitle2}>{'\u20A6'}{data.account_number}</Text> */}
+                <Text style={styles.subtitle2}>{userData.currency}: {userData.amount}</Text>
               </View>
               {/* <View>
                 <Text style={styles.subtitle}>add</Text>
                 <Text>add</Text>
               </View> */}
             </View>
+          )}
+
 
             <View style={styles.CardButtons}>
               <View style={styles.buttonContainer}>
@@ -69,6 +63,7 @@ const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit, toggleTheme, data}
                   icon="plus"
                   mode="contained"
                   buttonColor="#FFF"
+                  textColor='#000'
                   onPress={() => console.log('Pressed')}>
                   Add Money
                 </Button>
@@ -78,6 +73,7 @@ const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit, toggleTheme, data}
                   icon="file"
                   mode="contained"
                   buttonColor="#FFF"
+                  textColor='#000'
                   onPress={() => console.log('Pressed')}>
                   History
                 </Button>
@@ -86,11 +82,11 @@ const WalletCard: React.FC<CoffeeCardProps> = ({handleSubmit, toggleTheme, data}
           </View>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={{backgroundColor: colors.card}}
         onPress={toggleTheme}>
         <Text style={{color: colors.text}}>Button!</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -131,23 +127,23 @@ const styles = StyleSheet.create({
     marginRight: 70,
   },
   subtitle: {
-    fontSize: 14, // Assuming FONTSIZE.size_14 is 14
+    fontSize: 14,
     fontWeight: '200',
-    color: '#FFFFFF', // Assuming COLORS.primaryWhite is white
+    color: '#FFFFFF',
   },
   text: {
-    color: '#000000', // Assuming COLORS.primaryBlackHex is black
+    color: '#000000',
   },
   subtitle2: {
-    fontSize: 33, // Assuming FONTSIZE.size_28 is 28
-    color: '#FFFFFF', // Assuming COLORS.primaryWhite is white
+    fontSize: 33,
+    color: '#FFFFFF',
     flexDirection: 'row',
     alignItems: 'center',
     fontWeight: '500',
   },
   add: {
-    backgroundColor: '#FFFFFF', // Assuming COLORS.primaryWhite is white
-    color: '#000000', // Assuming COLORS.primaryBlackHex is black
+    backgroundColor: '#FFFFFF',
+    color: '#000000',
     width: 130,
     justifyContent: 'center',
     alignItems: 'center',

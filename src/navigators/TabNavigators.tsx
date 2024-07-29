@@ -21,12 +21,12 @@ const Tab = createBottomTabNavigator();
 const TabNavigators = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={{  
         tabBarHideOnKeyboard: true,
         headerShown: false,
         tabBarShowLabel: true,
         tabBarStyle: styles.tabBarStyle,
-        tabBarActiveTintColor: COLORS.primaryGradient, // Change this color to your desired focused text color
+        tabBarActiveTintColor: COLORS.primaryGradient,
       }}>
         <Tab.Screen
         name="Home"

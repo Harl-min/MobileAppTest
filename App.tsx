@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {Appearance, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ScheduleRequest from './src/screens/ScheduleRequest';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, Theme} from '@react-navigation/native';
 import TabNavigators from './src/navigators/TabNavigators';
 import DropoffScreen from './src/pages/DropoffScreen';
 import PickupScreen from './src/pages/PickupScreen';
@@ -14,24 +14,62 @@ import ScheduleDetails from './src/pages/ScheduleDetailsScreen';
 import Pickup from './src/pages/Pickup';
 import {useColorScheme} from 'react-native';
 import { DefaultTheme, DarkTheme} from '@react-navigation/native';
+import DarkMode from './src/utils/darkmode';
 
 const Stack = createNativeStackNavigator();
 const App = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [useDeviceSettings, setuseDeviceSettings] = useState(false);
+  const MyTheme = isDarkMode ? DarkTheme : DefaultTheme;
 
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
+  // const [fontsloaded] = usefonts ({
+  //   Poppins_400Regular
+  // })
+  const scheme = useColorScheme()
+  const CustomDarkTheme:Theme = {
+    ...DarkTheme,
+    dark:true,
+    colors:{
+      ...DarkTheme.colors,
+      primary: 'white',
+      background: '#202120',
+      card: '#121212'
+    }
+  }
 
-  const MyTheme = isDarkTheme ? DarkTheme : DefaultTheme;
+  useEffect(() =>{
+    let subscription: any;
+    if (useDeviceSettings) {
+      subscription = Appearance.addChangeListener(scheme=>{
+        // Dark mode will be true when scheme.colorSchema is equal to 'dark'
+        setIsDarkMode(scheme.colorScheme === 'dark')
+      })
+    }
+  return () =>{
+    if(subscription) {
+      subscription.remove()
+      subscription = null
+      }
+    }
+  }, [scheme, isDarkMode, useDeviceSettings])
+
 
   return (
-    <NavigationContainer theme={MyTheme}>
+    <DarkMode.Provider
+      value={{
+        isDarkMode,
+        setIsDarkMode,
+        useDeviceSettings,
+        setUseDeviceSettings(prev) {},
+      }}
+    >
+      
+    <NavigationContainer theme={isDarkMode ? CustomDarkTheme : DefaultTheme}>
       <StatusBar
         animated={true}
         backgroundColor="#fff"
         barStyle={'dark-content'}
-      />
+        />
       <Stack.Navigator
         initialRouteName="Tab"
         screenOptions={{headerShown: false}}>
@@ -43,11 +81,14 @@ const App = () => {
         <Stack.Screen
           name="SelectedCategoryScreen"
           component={SelectedCategoryScreen}
-        />
+          />
         <Stack.Screen name="ScheduleDetails" component={ScheduleDetails} />
       </Stack.Navigator>
     </NavigationContainer>
+    </DarkMode.Provider>
   );
 };
 
 export default App;
+
+
