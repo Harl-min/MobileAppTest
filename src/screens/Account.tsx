@@ -30,6 +30,8 @@ const AccountPage = () => {
 
   const scheme = useColorScheme();
   const currentTheme: ColorSchemeName = isDarkMode ? 'dark' : 'light';
+  const textColor = isDarkMode ? 'white' : 'black';
+
   function handleUseDeviceTheme() {
     setUseDeviceSettings(!useDeviceSettings);
     if (scheme === 'dark') {
@@ -61,7 +63,7 @@ const AccountPage = () => {
         leftIconVisible={false}
         rightIconName="home-sharp"
       />
-      <Card style={styles.card}>
+      {/* <Card style={styles.card} isDarkMode={isDarkMode}>
         <View>
           <Text style={styles.text}>Use device theme</Text>
           <Switch
@@ -74,11 +76,11 @@ const AccountPage = () => {
             thumbColor={'white'}
           />
         </View>
-      </Card>
+      </Card> */}
 
       <Card style={styles.card}>
         <View>
-          <Text style={styles.text}>Dark Mode</Text>
+          <Text style={[styles.text, { color: textColor }]}>Dark Mode</Text>
           <Switch
             trackColor={{
               true: '#82b875',

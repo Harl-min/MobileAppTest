@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { COLORS, FONTSIZE } from '../theme/theme';
+import DarkMode from '../utils/darkmode';
 
 interface ToolbarProps {
   title: string;
@@ -15,6 +16,9 @@ interface ToolbarProps {
 }
 
 const Toolbar: FC<ToolbarProps> = ({ title, onBackPress, rightIconName,  rightIconVisible, leftIconVisible, onRightIconPress }) => {
+  const {isDarkMode} = useContext(DarkMode)
+  const textColor = isDarkMode ? 'white' : 'black';
+
   return (
     <View style={styles.toolbar}>
       {leftIconVisible && (
@@ -24,7 +28,7 @@ const Toolbar: FC<ToolbarProps> = ({ title, onBackPress, rightIconName,  rightIc
       )
       }
       
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, { color: textColor }]}>{title}</Text>
       {rightIconVisible && rightIconName && (
         <TouchableOpacity onPress={onRightIconPress} style={styles.iconContainer}>
           <Ionicons name="notifications" size={20} color="#000" />
@@ -40,7 +44,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: 20,
-      backgroundColor: '#fff',
+      // backgroundColor: '#fff',
       borderBottomWidth: 1,
       borderBottomColor: '#ddd',
       height: 60,

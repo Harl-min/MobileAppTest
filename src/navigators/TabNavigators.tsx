@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import ScheduleRequest from '../screens/ScheduleRequest';
 import SchedulePickup from '../screens/SchedulePickupp/index';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -14,32 +14,39 @@ import HomePage from '../screens/Home';
 import Wallet from '../screens/Wallet';
 import ChatroomScreen from '../screens/Chatroom';
 import AccountPage from '../screens/Account';
+import DarkMode from '../utils/darkmode';
 
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigators = () => {
+  const { isDarkMode } = useContext(DarkMode);
+
   return (
     <Tab.Navigator
       screenOptions={{  
         tabBarHideOnKeyboard: true,
         headerShown: false,
         tabBarShowLabel: true,
-        tabBarStyle: styles.tabBarStyle,
-        tabBarActiveTintColor: COLORS.primaryGradient,
+        tabBarStyle: {
+          backgroundColor: isDarkMode ? '#202120' : '#fff',
+        },
+        tabBarActiveTintColor: isDarkMode ? '#fff' : '#000',
+        tabBarInactiveTintColor: isDarkMode ? '#888' : '#888',
       }}>
-        <Tab.Screen
+           <Tab.Screen
         name="Home"
         component={HomePage}
         options={{
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarIcon: ({ focused }) => (
             <Ionicons
               name="home"
               size={24}
-              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+              color={isDarkMode ? (focused ? '#fff' : '#888') : (focused ? '#000' : '#888')}
             />
           ),
-        }} />
+        }}
+      />
       <Tab.Screen
         name="Pickup"
         component={SchedulePickup}
@@ -48,7 +55,7 @@ const TabNavigators = () => {
             <Maticons
               name="calendar-clock"
               size={24}
-              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+              color={isDarkMode ? (focused ? '#fff' : '#888') : (focused ? '#000' : '#888')}
             />
           ),
         }} />
@@ -60,7 +67,7 @@ const TabNavigators = () => {
             <Ionicons
               name="wallet"
               size={24}
-              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+              color={isDarkMode ? (focused ? '#fff' : '#888') : (focused ? '#000' : '#888')}
             />
           ),
         }} />
@@ -72,7 +79,7 @@ const TabNavigators = () => {
             <Ionicons
               name="chatbubbles-outline"
               size={24}
-              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+              color={isDarkMode ? (focused ? '#fff' : '#888') : (focused ? '#000' : '#888')}
             />
           ),
         }} /><Tab.Screen
@@ -83,7 +90,7 @@ const TabNavigators = () => {
             <Maticons
               name="account"
               size={24}
-              color={focused ? COLORS.primaryGradient : COLORS.primaryBlackHex}
+              color={isDarkMode ? (focused ? '#fff' : '#888') : (focused ? '#000' : '#888')}
             />
           ),
         }} />

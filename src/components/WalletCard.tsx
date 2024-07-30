@@ -5,7 +5,6 @@ import {Button} from 'react-native-paper';
 import {useTheme} from '@react-navigation/native';
 import { walletCard } from '../actions/walletCard';
 import { AxiosResponse } from 'axios';
-import { Account, UserResponse } from '../interfaces/user.interface';
 
 interface WalletProps {
   handleSubmit: (value: any) => void;

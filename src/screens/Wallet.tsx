@@ -1,13 +1,10 @@
 /* eslint-disable prettier/prettier */
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Toolbar from '../components/toolbar';
-import {List} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, { useContext } from 'react';
 import WalletCard from '../components/WalletCard';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {COLORS} from '../theme/theme';
+import DarkMode from '../utils/darkmode';
 
 const handleBackPress = () => {
   // Handle back button press
@@ -20,7 +17,8 @@ const handleRightIconPress = () => {
 };
 const Wallet = ({}) => {
   const [expanded, setExpanded] = React.useState(true);
-
+  const {isDarkMode} = useContext(DarkMode)
+  const textColor = isDarkMode ? 'white' : 'black';
   const handlePress = () => setExpanded(!expanded);
   return (
     <View style={styles.body}>
@@ -30,10 +28,10 @@ const Wallet = ({}) => {
             style={styles.icon}
             name="arrow-back-ios"
             size={20}
-            color="#000"
+            color={isDarkMode ? '#fff' : '#202120'}
           />
         </TouchableOpacity>
-        <Text style={styles.title}>Wallet</Text>
+        <Text style={[styles.title, { color: textColor }]}>Wallet</Text>
       </View>
       <WalletCard handleSubmit={handleBackPress} />
     </View>

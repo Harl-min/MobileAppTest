@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {Appearance, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ScheduleRequest from './src/screens/ScheduleRequest';
@@ -19,9 +19,9 @@ import DarkMode from './src/utils/darkmode';
 const Stack = createNativeStackNavigator();
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [useDeviceSettings, setuseDeviceSettings] = useState(false);
+  const [useDeviceSettings, setUseDeviceSettings] = useState(false);
   const MyTheme = isDarkMode ? DarkTheme : DefaultTheme;
-
+  const backgroundColor = isDarkMode ? 'white' : 'black';
   // const [fontsloaded] = usefonts ({
   //   Poppins_400Regular
   // })
@@ -66,9 +66,8 @@ const App = () => {
       
     <NavigationContainer theme={isDarkMode ? CustomDarkTheme : DefaultTheme}>
       <StatusBar
-        animated={true}
-        backgroundColor="#fff"
-        barStyle={'dark-content'}
+          backgroundColor={isDarkMode ? '#202120' : '#fff'}
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         />
       <Stack.Navigator
         initialRouteName="Tab"
