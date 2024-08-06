@@ -1,19 +1,25 @@
 /* eslint-disable prettier/prettier */
 import {
   ColorSchemeName,
+  ScrollView,
+  StyleProp,
   StyleSheet,
   Switch,
-  Text,
+  TouchableOpacity,
   View,
+  ViewProps,
+  ViewStyle,
   useColorScheme,
 } from 'react-native';
 import React, {useCallback, useContext, useEffect} from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Toolbar from '../components/toolbar';
-import {List} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {Card, Theme} from '../utils/Theme';
+import {Icon, MD3Colors} from 'react-native-paper';
 import DarkMode from '../utils/darkmode';
+import AccountCard from '../components/AccountProfileCard';
+import {Avatar, Button, Card, Text} from 'react-native-paper';
+import {IconSource} from 'react-native-paper/lib/typescript/components/Icon';
+import {ThemeProp} from 'react-native-paper/lib/typescript/types';
 
 const handleBackPress = () => {
   // Handle back button press
@@ -54,8 +60,20 @@ const AccountPage = () => {
   const [expanded, setExpanded] = React.useState(true);
 
   const handlePress = () => setExpanded(!expanded);
+  const LeftContent = (
+    props: React.JSX.IntrinsicAttributes &
+      ViewProps &
+      React.RefAttributes<View> & {
+        icon: IconSource;
+        size?: number | undefined;
+        color?: string | undefined;
+        style?: StyleProp<ViewStyle>;
+        theme?: ThemeProp | undefined;
+      },
+  ) => <Avatar.Icon {...props} icon="folder" />;
+
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Toolbar
         title="Account"
         onBackPress={handleBackPress}
@@ -63,25 +81,32 @@ const AccountPage = () => {
         leftIconVisible={false}
         rightIconName="home-sharp"
       />
-      {/* <Card style={styles.card} isDarkMode={isDarkMode}>
-        <View>
-          <Text style={styles.text}>Use device theme</Text>
-          <Switch
-            trackColor={{
-              true: '#82b875',
-              false: 'gray',
-            }}
-            onChange={handleUseDeviceTheme}
-            value={useDeviceSettings}
-            thumbColor={'white'}
-          />
-        </View>
-      </Card> */}
-
-      <Card style={styles.card}>
-        <View>
-          <Text style={[styles.text, { color: textColor }]}>Dark Mode</Text>
-          <Switch
+      <ScrollView style={styles.container}>
+        <AccountCard />
+        <Card
+          style={[
+            {
+              backgroundColor: '#fff',
+              paddingHorizontal: 10,
+              paddingVertical: 15,
+              marginTop: 10
+            },
+          ]}>
+          <View>
+            <TouchableOpacity style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Personal Data</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Language</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
+            </TouchableOpacity>
+            <View style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Dark Mode</Text>
+              <Switch
             trackColor={{
               true: '#82b875',
               false: 'gray',
@@ -90,22 +115,96 @@ const AccountPage = () => {
             value={isDarkMode}
             thumbColor={'white'}
           />
-        </View>
-      </Card>
+            </View>
+          </View>
+        </Card>
+        <Card
+          style={[
+            {
+              backgroundColor: '#fff',
+              paddingHorizontal: 10,
+              paddingVertical: 15,
+              marginTop: 10
+            },
+          ]}>
+          <View>
+            <TouchableOpacity style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Personal Data</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Language</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
+            </TouchableOpacity>
+            <View style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Dark Mode</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
+            </View>
+          </View>
+        </Card>
+        <Card
+          style={[
+            {
+              backgroundColor: '#fff',
+              paddingHorizontal: 10,
+              paddingVertical: 15,  
+              marginTop: 10
+            },
+          ]}>
+          <View>
+            <TouchableOpacity style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Language</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
+            </TouchableOpacity>
+            <View style={styles.body}>
+              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Text style={styles.list}>Log Out</Text>
+              <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
+            </View>
+          </View>
+        </Card>
+        
+      </ScrollView>
     </View>
   );
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 23,
+    // marginVertical: 20,
+  },
+  body: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    backgroundColor: '#fff',
+  },
+  list: {
+    flex: 1, // To take up remaining space between Icon and arrow
+    color: '#000', // Set text color to black
+    marginLeft: 5, // Add some spacing between icon and text
+  },
   text: {
     color: 'black',
   },
   card: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: 10
+    marginTop: 10,
   },
+  // list: {
+  //   color: 'black',
+  //   marginVertical: 10,
+  //   fontWeight: '800',
+  // },
 });
 
 export default AccountPage;
