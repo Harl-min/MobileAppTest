@@ -29,12 +29,13 @@ const AccountCard = () => {
             <Text style={styles.text}>Harlmeen51@gmail.com</Text>
           </View>
           <Button
-            icon="camera"
+            icon="arrow-right"
             mode="contained"
             buttonColor="#005500"
             textColor="#fff"
+            contentStyle={{ flexDirection: 'row-reverse' }}
             onPress={() => console.log('Pressed')}>
-            Press me
+            Edit Profile
           </Button>
         </View>
       </Card>

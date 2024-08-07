@@ -13,6 +13,8 @@ import {
 } from 'react-native';
 import React, {useCallback, useContext, useEffect} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
 import Toolbar from '../components/toolbar';
 import {Icon, MD3Colors} from 'react-native-paper';
 import DarkMode from '../utils/darkmode';
@@ -84,6 +86,7 @@ const AccountPage = () => {
       <ScrollView style={styles.container}>
         <AccountCard />
         <Card
+        mode="contained"
           style={[
             {
               backgroundColor: '#fff',
@@ -94,17 +97,17 @@ const AccountPage = () => {
           ]}>
           <View>
             <TouchableOpacity style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <AntDesign name="profile" color={'#005500'} size={20} />
               <Text style={styles.list}>Personal Data</Text>
               <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
-              <Text style={styles.list}>Language</Text>
+            <Entypo name="language" color={'#005500'} size={20} />
+            <Text style={styles.list}>Language</Text>
               <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
             </TouchableOpacity>
             <View style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <Entypo name="moon" color={'#005500'} size={20} />
               <Text style={styles.list}>Dark Mode</Text>
               <Switch
             trackColor={{
@@ -118,7 +121,7 @@ const AccountPage = () => {
             </View>
           </View>
         </Card>
-        <Card
+        <Card mode="contained"
           style={[
             {
               backgroundColor: '#fff',
@@ -129,23 +132,24 @@ const AccountPage = () => {
           ]}>
           <View>
             <TouchableOpacity style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
-              <Text style={styles.list}>Personal Data</Text>
+            <Entypo name="notification" color={'#005500'} size={20} />
+              <Text style={styles.list}>Notifications</Text>
               <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
-              <Text style={styles.list}>Language</Text>
+            <Entypo name="newsletter" color={'#005500'} size={20} />
+              <Text style={styles.list}>Agreements</Text>
               <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
             </TouchableOpacity>
             <View style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
-              <Text style={styles.list}>Dark Mode</Text>
+              <MaterialIcons name="phone-callback" color={'#005500'} size={20} />
+              <Text style={styles.list}>Help Center</Text>
               <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
             </View>
           </View>
         </Card>
         <Card
+        mode="contained"
           style={[
             {
               backgroundColor: '#fff',
@@ -156,12 +160,12 @@ const AccountPage = () => {
           ]}>
           <View>
             <TouchableOpacity style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
-              <Text style={styles.list}>Language</Text>
+            <AntDesign name="exclamationcircle" color={'#005500'} size={20} />
+              <Text style={styles.list}>About</Text>
               <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
             </TouchableOpacity>
             <View style={styles.body}>
-              <Icon source="camera" color={MD3Colors.error50} size={20} />
+              <MaterialIcons name="logout" color={'#005500'} size={20} />
               <Text style={styles.list}>Log Out</Text>
               <MaterialIcons name="keyboard-arrow-right" size={25} style={{color: '#000'}} />
             </View>
