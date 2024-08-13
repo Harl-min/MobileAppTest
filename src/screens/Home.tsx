@@ -16,6 +16,7 @@ import Toolbar from '../components/toolbar';
 import PopUpAnimation from '../components/PopUpAnimation';
 import { Avatar } from 'react-native-paper';
 import AccountCard from '../components/AccountProfileCard';
+import DashCards from '../components/DashCards';
 
 const handleBackPress = () => {
   // Handle back button press
@@ -32,9 +33,11 @@ const HomePage = ({navigation}) => {
             <Text style={styles.username}>No 5, Etim Center...</Text>
           </View>
 
-          <View>
-            <Text style={styles.username}>Recently</Text>
-          <AccountCard />
+          <View style={styles.dashcards}>
+          <DashCards title="Pick Up Trash"/>
+          <DashCards title="Schedule Pickup"/>
+          <DashCards title="My Voucher"/>
+          <DashCards title="Contact Center"/>
           </View>
         </View>
       </ScrollView>
@@ -59,12 +62,11 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: 10
   },
-  content: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  dashcards: {
+    flexDirection: 'row', // Arrange items in a row
+    flexWrap: 'wrap', // Allow items to wrap to the next line
+    justifyContent: 'space-between', // Optional: Adjust space between cards
   },
-
   text: {
     fontSize: 16,
   },
