@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Card, Text} from 'react-native-paper'
+import {Card, Text} from 'react-native-paper';
 import {
   BORDERRADIUS,
   COLORS,
@@ -19,29 +19,21 @@ import {
 import {Avatar, Button} from 'react-native-paper';
 
 interface Card {
-  title: string,
+  title: string;
 }
 
-const AccountCard = ({title} : Card) => {
+const AccountCard = ({title}: Card) => {
   return (
     <View>
       <Card style={styles.container}>
-        <View>
-          <View style={styles.avatar}>
-          <Avatar.Icon size={24} icon="folder" />
-
-            <Text style={styles.username}>{title}</Text>
+        <TouchableOpacity>
+          <View>
+            <View style={styles.avatar}>
+              <Avatar.Icon size={24} icon="folder" />
+              <Text style={styles.username}>{title}</Text>
+            </View>
           </View>
-          {/* <Button
-            icon="arrow-right"
-            mode="contained"
-            buttonColor="#005500"
-            textColor="#fff"
-            contentStyle={{ flexDirection: 'row-reverse' }}
-            onPress={() => console.log('Pressed')}>
-            Edit Profile
-          </Button> */}
-        </View>
+        </TouchableOpacity>
       </Card>
     </View>
   );
@@ -51,7 +43,7 @@ const styles = StyleSheet.create({
   avatar: {
     justifyContent: 'center',
     marginBottom: 20,
-    width: '100%', // Adjust width to fit two cards per row
+    width: '100%',
   },
   container: {
     marginVertical: 8,
@@ -67,12 +59,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '800',
     color: 'black',
-    marginTop: 10
+    marginTop: 10,
   },
   text: {
     fontSize: 14,
     color: 'black',
-    fontWeight: '100'
+    fontWeight: '100',
   },
 });
 
