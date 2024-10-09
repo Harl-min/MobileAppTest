@@ -26,7 +26,7 @@ const handleBackPress = () => {
 
 const HomePage = ({navigation}) => {
   return (
-    <View>
+    <View style={{ flex: 1, marginHorizontal: 16 }}>
       <ScrollView>
         <View>
           <View style={styles.avatar}>
@@ -37,12 +37,12 @@ const HomePage = ({navigation}) => {
             <View style={styles.statusCard}>
               <View style={styles.statusText}>
                 <Text>Pickup Left</Text>
-                <Text>4</Text>
+                <Text style={styles.statusData}>4</Text>
               </View>
-              <DashedLine axis='vertical' dashLength={5} />
+              <DashedLine style={styles.statusLine} axis='vertical' dashLength={7} dashColor='#adadad'/>
               <View style={styles.statusText}>
                 <Text>Balance</Text>
-                <Text>{'\u20A6'} 2,000</Text>
+                <Text style={styles.statusData}>{'\u20A6'} 2,000</Text>
               </View>
             </View>
           </View>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: '',
     // height: 200,
-    paddingHorizontal: 15,
+    // paddingHorizontal: 15,
     paddingVertical: 10,
     borderBottomLeftRadius: 16,
     borderBottomRightRadius: 16,
@@ -79,17 +79,28 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 12,
     flexDirection: 'row',
-    // alignItems: 'center',
-    justifyContent: 'space-evenly',
-    // paddingHorizontal: 20,
+    alignItems: 'center',  // Align items vertically
+    justifyContent: 'space-between', // Space between items
+    paddingHorizontal: 20,  // Add padding to the card
   },
   statusText: {
-    // flexDirection: 'column',
+    flex: 1,  // Allow the text containers to take equal space
     justifyContent: 'center',
     alignItems: 'center',
   },
+  statusData: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginVertical: 5
+  },
+  statusLine: {
+    height: 100,
+    justifyContent: 'center',
+    marginHorizontal: 10,  // Space around the line
+    width: 1,  // Ensure the line takes minimal space
+  },
   username: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '500',
     color: COLORS.primaryBlackHex,
     marginTop: 10,
@@ -98,7 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginHorizontal: 23,
+    // marginHorizontal: 18,
   },
 });
 
